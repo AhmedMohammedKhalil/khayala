@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'photo'
     ];
 
     /**
@@ -30,15 +31,47 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function orders()
+    {
+        return $this->belongsToMany(Product::class,'user_products')
+                ->withTimestamps();
+    }
+
+    public function doctor_booking()
+    {
+        return $this->belongsToMany(Doctor::class,'user_doctors')
+                ->withTimestamps()
+                ->withPivot('book_at','status');
+    }
+    
+    public function trainer_booking()
+    {
+        return $this->belongsToMany(Trainer::class,'user_trainers')
+                ->withTimestamps()
+                ->withPivot('book_at','status');
+    }
+
+    public function competiton_booking()
+    {
+        return $this->belongsToMany(Competition::class,'user_competitions')
+                ->withTimestamps()
+                ->withPivot('status');
+    }
+
+    public function product_rate()
+    {
+        return $this->morphedByMany(Product::class, 'rate');
+    }
+
+    public function Trainer_rate()
+    {
+        return $this->morphedByMany(Trainer::class, 'rate');
+    }
+
+    public function Doctor_rate()
+    {
+        return $this->morphedByMany(Doctor::class, 'rate');
+    }
 }

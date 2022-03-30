@@ -28,8 +28,9 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         Relation::enforceMorphMap([
-            'post' => 'App\Models\Post',
-            'video' => 'App\Models\Video',
+            'doctor' => 'App\Models\Doctor',
+            'trainer' => 'App\Models\Trainer',
+            'product' => 'App\Models\Product',
         ]);
     }
 }
