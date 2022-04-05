@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;   
 
-class Doctor extends Model
+class Doctor extends Authenticatable
 {
     use HasFactory;
 
@@ -14,6 +14,8 @@ class Doctor extends Model
     protected $fillable = [
         'name', 'email', 'password','photo','address', 'phone', 'specialization','rating','description'
     ];
+
+    protected $guarded = [];
 
     protected $hidden = [
         'password',

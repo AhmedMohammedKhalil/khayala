@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('phono',8);
+            $table->string('phone',8);
             $table->string('photo')->nullable();
             $table->text('address');
             $table->timestamps();

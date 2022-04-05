@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('phone',8);
             $table->text('address');
             $table->text('desription');
-            $table->double('rating');
+            $table->double('rating')->default(0);
             $table->timestamps();
         });
     }

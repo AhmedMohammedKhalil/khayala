@@ -5,9 +5,41 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorController extends Controller
 {
+
+
+    public function showLogin() {
+        return view('doctors.login');
+    }
+
+
+    public function showRegister() {
+        return view('doctors.register');
+    }
+
+
+    public function profile() {
+        return view('doctors.profile',['page_name' => 'Profile']);
+    }
+
+    public function settings() {
+        return view('doctors.settings',['page_name' => 'Settings']);
+    }
+
+    public function changePassword() {
+        return view('doctors.changePassword',['page_name' => 'Change Password']);
+    }
+
+    public function logout(Request $request) {
+        Auth::guard('doctor')->logout();
+        $request->session()->invalidate();
+        return redirect()->route('home');
+    }
+
     /**
      * Display a listing of the resource.
      *

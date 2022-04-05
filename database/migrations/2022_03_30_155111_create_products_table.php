@@ -24,7 +24,7 @@ return new class extends Migration
                 ->references('id')->on('trainers')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->double('rating');
+            $table->double('rating')->default(0);
             $table->timestamps();
         });
     }
