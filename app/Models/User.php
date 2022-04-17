@@ -48,7 +48,7 @@ class User extends Authenticatable
                 ->withTimestamps()
                 ->withPivot('book_at','status');
     }
-    
+
     public function trainer_booking()
     {
         return $this->belongsToMany(Trainer::class,'user_trainers')
@@ -63,18 +63,8 @@ class User extends Authenticatable
                 ->withPivot('status');
     }
 
-    public function product_rate()
-    {
-        return $this->morphedByMany(Product::class, 'rate');
+    public function rates() {
+        return $this->hasMany(Rate::class,'user_id');
     }
 
-    public function Trainer_rate()
-    {
-        return $this->morphedByMany(Trainer::class, 'rate');
-    }
-
-    public function Doctor_rate()
-    {
-        return $this->morphedByMany(Doctor::class, 'rate');
-    }
 }

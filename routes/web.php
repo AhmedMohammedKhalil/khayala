@@ -20,13 +20,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/competition', 'HomeController@competition')->name('competitons');
 Route::get('/search','HomeController@search')->name('search');
-Route::get('/admin/login','AdminController@showLogin')->name('admin.login');
-Route::get('/user/login','UserController@showLogin')->name('user.login');
-Route::get('/user/register','UserController@showRegister')->name('user.register');
-Route::get('/doctor/login','DoctorController@showLogin')->name('doctor.login');
-Route::get('/doctor/register','DoctorController@showRegister')->name('doctor.register');
-Route::get('/trainer/login','TrainerController@showLogin')->name('trainer.login');
-Route::get('/trainer/register','TrainerController@showRegister')->name('trainer.register');
+
+Route::middleware(['guest:admin', 'guest:user', 'guest:doctor', 'guest:trainer'])->group(function () {
+    Route::get('/admin/login', 'AdminController@showLogin')->name('admin.login');
+    Route::get('/user/login', 'UserController@showLogin')->name('user.login');
+    Route::get('/user/register', 'UserController@showRegister')->name('user.register');
+    Route::get('/doctor/login', 'DoctorController@showLogin')->name('doctor.login');
+    Route::get('/doctor/register', 'DoctorController@showRegister')->name('doctor.register');
+    Route::get('/trainer/login', 'TrainerController@showLogin')->name('trainer.login');
+    Route::get('/trainer/register', 'TrainerController@showRegister')->name('trainer.register');
+});
 
 
 Route::middleware(['auth:admin'])->name('admin.')->prefix('admin')->group(function () {

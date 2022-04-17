@@ -14,7 +14,7 @@ class Product extends Model
         'trainer_id','name','photo','price','rating','details'
     ];
 
-   
+
 
     public function trainer()
     {
@@ -26,9 +26,9 @@ class Product extends Model
         return $this->belongsToMany(User::class,'user_products')
                 ->withTimestamps();
     }
-    
+
     public function rates()
     {
-        return $this->morphToMany(User::class, 'rate');
+        return $this->morphMany(Rate::class, 'rate');
     }
 }

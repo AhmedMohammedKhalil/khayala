@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;   
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Trainer extends Authenticatable
 {
@@ -38,6 +38,6 @@ class Trainer extends Authenticatable
 
     public function rates()
     {
-        return $this->morphToMany(User::class, 'rate');
+        return $this->morphMany(Rate::class, 'rate');
     }
 }

@@ -14,4 +14,8 @@ class Rate extends Model
         'user_id','rate_id', 'rate_type', 'rate'
     ];
 
+    public function rate() {
+        return $this->morphTo();
+    }
+
 }
