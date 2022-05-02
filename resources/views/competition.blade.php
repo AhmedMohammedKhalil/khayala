@@ -1,16 +1,15 @@
 @extends('layouts.app')
 @section('content')
     <!-- Start Page Title Area -->
-    <div class="page-title-area bg2 jarallax" data-jarallax='{"speed": 0.2}'>
-        <div class="container">
-            <div class="page-title-content">
-                <h1>Our Competitions</h1>
+        <div class="page-title-area bg2 jarallax" data-jarallax='{"speed": 0.2}'>
+            <div class="container">
+                <div class="page-title-content">
+                    <h1>جميع المسابقات</h1>
+                </div>
             </div>
         </div>
-    </div>
     <!-- End Page Title Area -->
-    <!-- Start Stallions Area -->
-    <section class="stallions-area ptb-80">
+    <section class="stallions-area ptb-80" style="min-height:40vh">
         @if(count($competitions) > 0)
             <div class="container">
                 <div class="row">
@@ -25,23 +24,23 @@
                                 <div class="stallions-content">
                                     <h3>{{ $c->name }}</h3>
                                     <h4>{{ $c->organization }}</h4>
-                                    <p>{{ $c->address }}</p>
-                                    <p>{{ $c->description }}</p>
-                                    <a href="#" class="view-details">View Details <i class="icofont-simple-right"></i></a>
+                                    <h6>{{ $c->appointment }}</h6>
+                                    <p class="line-clamp">{{ $c->address }}</p>
+                                    <a href="{{ route('competitons.show',['id'=>$c->id]) }}" class="view-details">للمزيد<i class="icofont-simple-left"></i></a>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-                    
+
                 </div>
             </div>
         @else
             <div>
-                <p>Not Found</p>
+                <h4 class="text-center">لا يوجد اى مسابقات الأن </h4>
             </div>
         @endif
         <div class="horse-box3 wow fadeInLeft slow"><img src="{{asset('img/2.png')}}" alt="horse"></div>
         <div class="horse-box4 wow fadeInLeft slow"><img src="{{asset('img/3.png')}}" alt="horse"></div>
     </section>
-    <!-- End Stallions Area -->
+
 @endsection

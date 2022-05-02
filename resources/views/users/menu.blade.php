@@ -3,39 +3,39 @@
 
 
         <section class="widget widget_recent_entries">
-            <h3 class="widget-title">Main</h3>
+            <h3 class="widget-title">الرئيسية</h3>
             <ul>
-                <li><a href="{{ route('user.profile') }}">Profile</a></li>
-                <li><a href="{{ route('user.changePassword') }}">Change Password</a></li>
-                <li><a href="{{ route('user.settings') }}">Settings</a></li>
-                <li><a href="{{ route('user.logout') }}">Log Out</a></li>
+                <li><a href="{{ route('user.profile') }}">البروفايل</a></li>
+                <li><a href="{{ route('user.changePassword') }}">تغيير الباسورد</a></li>
+                <li><a href="{{ route('user.settings') }}">الإعدادات</a></li>
+                <li><a href="{{ route('user.logout') }}">خروج</a></li>
             </ul>
         </section>
 
 
         <section class="widget widget_recent_comments">
-            <h3 class="widget-title">Dashboard</h3>
+            <h3 class="widget-title">لوحة التحكم</h3>
             <ul>
                 <li>
                     <span class="comment-author-link">
-                            <a href="#">Prodcut Orders</a>
-                    </span> 
+                            <a href="#">المشتريات</a>
+                    </span>
                 </li>
-                
+
                 <li>
                     <span class="comment-author-link">
-                            <a href="#">Trainer Reservations</a>
-                    </span> 
-                </li>
-                <li>
-                    <span class="comment-author-link">
-                            <a href="#">Doctor Reservatins</a>
-                    </span> 
+                        <a href="{{ route('user.booking.trainer.show') }}">حجز مواعيد المدربين</a>
+                    </span>
                 </li>
                 <li>
                     <span class="comment-author-link">
-                            <a href="#">Competitions Reservatins</a>
-                    </span> 
+                        <a href="{{ route('user.booking.doctor.show') }}">حجز مواعيد الدكاترة</a>
+                    </span>
+                </li>
+                <li>
+                    <span class="comment-author-link">
+                            <a href="{{ route('user.booking.competition.show') }}">إشتراكات المسابقات</a>
+                    </span>
                 </li>
             </ul>
         </section>

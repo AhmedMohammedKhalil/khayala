@@ -1,0 +1,89 @@
+.dropdown-menu{
+    text-align: center
+}
+
+.mean-bar {
+    top:30px;
+}
+.mean-nav ul {
+    flex-direction: column !important;
+}
+.mean-bar ul li a {
+    float: right !important;
+    text-align: right !important;
+}
+.mean-bar ul li a.mean-expand {
+    left:0 !important;
+    text-align: left !important;
+    right: unset !important;
+}
+
+.single-courses .courses-content .read-more::before {
+    left: unset;
+    right: 0
+}
+.single-stallions .stallions-content .view-details i, .single-stallions .stallions-content .view-details i {
+    right: 50%;
+    left: unset;
+    padding-top: 10px;
+
+}
+.single-stallions .stallions-content .view-details:hover i, .single-stallions .stallions-content .view-details:focus i {
+    right: 100%;
+    left: unset;
+
+}
+
+
+
+.coming-soon-content form .submit-btn {
+    left: 0;
+    right: unset
+}
+
+.widget-area ul li a {
+    margin-right: 20px;
+}
+.widget-area ul li::before {
+    left: unset;
+    right: 0
+}
+
+
+form .rating {
+    display: inline-block;
+    padding-right: 10px;
+}
+
+form .rating span {
+    padding-right: 10px;
+    font-weight: 600;
+}
+
+form .rating input {
+    border: 1px solid #eeeeee;
+    background: #ffffff;
+    height: 45px;
+    padding: 15px;
+    width: 75px;
+    outline: 0;
+    font-size: 16px;
+}
+
+
+form button.make-rate {
+    background: #e49320;
+    color: #ffffff;
+    border: none;
+    height: 44px;
+    text-transform: uppercase;
+    padding: 0 20px;
+    position: relative;
+    top: -1px;
+    cursor: pointer;
+    outline: 0;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    font-size: 14px;
+    font-weight: 600;
+}

@@ -18,10 +18,11 @@ return new class extends Migration
             $table->string('name',100);
             $table->string('organization',100);
             $table->text('address');
-            $table->text('desription');
+            $table->text('description');
             $table->text('photo')->nullable();
+            $table->timestamp('appointment');
             $table->integer('status')->nullable()->default(0);
-            $table->string('total');
+            $table->integer('total');
             $table->timestamps();
         });
     }

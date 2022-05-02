@@ -68,7 +68,7 @@ return [
     |
     */
 
-    'app_url' => null,
+    'app_url' => 'http://127.0.0.1:8000',
 
     /*
     |--------------------------------------------------------------------------
@@ -101,9 +101,11 @@ return [
         'directory' => null,   // Example: 'tmp'                      Default  'livewire-tmp'
         'middleware' => null,  // Example: 'throttle:5,1'             Default: 'throttle:60,1'
         'preview_mimes' => [   // Supported file types for temporary pre-signed file URLs.
-            'png','jpg','jpeg',
+            'png', 'gif', 'bmp', 'svg', 'wav', 'mp4',
+            'mov', 'avi', 'wmv', 'mp3', 'm4a',
+            'jpg', 'jpeg', 'mpga', 'webp', 'wma',
         ],
-        'max_upload_time' => 1, // Max duration (in minutes) before an upload gets invalidated.
+        'max_upload_time' => 5, // Max duration (in minutes) before an upload gets invalidated.
     ],
 
     /*

@@ -14,5 +14,11 @@ class user_doctor extends Model
         'user_id', 'doctor_id', 'book_at','status'
     ];
 
-    
+    public function doctor() {
+        return $this->belongsTo(Doctor::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -11,7 +11,7 @@ class Cases extends Model
 
 
     protected $fillable = [
-        'doctor_id','title', 'details', 'tratement'
+        'doctor_id','title', 'details', 'treatment'
     ];
 
     public function doctor()

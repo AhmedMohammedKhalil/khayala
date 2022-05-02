@@ -3,84 +3,71 @@
 namespace App\Http\Controllers;
 
 use App\Models\Competition;
-use App\Http\Requests\StoreCompetitionRequest;
-use App\Http\Requests\UpdateCompetitionRequest;
+use App\Models\user_competition;
+use Illuminate\Http\Request;
 
 class CompetitionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function index()
     {
-        return view('competiton');
+        $competitions = competition::all();
+        $page_name = 'المسابقات';
+        return view('admins.competitions.index',compact('competitions','page_name'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        $page_name = 'إضافة مسابقة';
+        return view('admins.competitions.create',compact('page_name'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreCompetitionRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreCompetitionRequest $request)
+
+
+
+    public function show(Request $r)
     {
-        //
+        $competition = competition::whereId($r->id)->first();
+        $page_name = 'عرض المسابقة';
+        return view('admins.competitions.show',compact('competition','page_name'));
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Competition  $competition
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Competition $competition)
+
+    public function edit(Request $r)
     {
-        //
+        $competition = competition::whereId($r->id)->first();
+        $page_name = 'تعديل المسابقة';
+        return view('admins.competitions.edit',compact('competition','page_name'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Competition  $competition
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Competition $competition)
+
+
+    public function delete(Request $r)
     {
-        //
+        competition::destroy($r->id);
+        return redirect()->route('admin.competitions');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateCompetitionRequest  $request
-     * @param  \App\Models\Competition  $competition
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateCompetitionRequest $request, Competition $competition)
-    {
-        //
+
+    public function acceptComp(Request $r) {
+        $comp = user_competition::whereId($r->id)->first();
+        user_competition::whereId($r->id)->update(['status'=>1]);
+        $count = user_competition::whereId($r->id)->where('status','!=',2)->get()->count();
+        Competition::whereId($comp->competition_id)->where('total','>',$count)->update(['status'=>0]);
+        return redirect()->route('admin.booking.competition.show');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Competition  $competition
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Competition $competition)
-    {
-        //
+
+    public function rejectComp(Request $r) {
+        $comp = user_competition::whereId($r->id)->first();
+        user_competition::whereId($r->id)->update(['status'=>2]);
+        $count = user_competition::whereId($r->id)->where('status','!=',2)->get()->count();
+        Competition::whereId($comp->competition_id)->where('total','>',$count)->update(['status'=>0]);
+        return redirect()->route('admin.booking.competition.show');
     }
+
+
 }

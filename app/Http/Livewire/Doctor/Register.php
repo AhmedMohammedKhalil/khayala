@@ -10,7 +10,7 @@ use Livewire\Component;
 class Register extends Component
 {
     public $name, $email, $password, $confirm_password, $phone, $specialization, $description, $address;
-    
+
 
     protected $rules = [
         'name' => ['required', 'string', 'max:50'],
@@ -24,6 +24,20 @@ class Register extends Component
 
     ];
 
+    protected $messages = [
+        'required' => 'ممنوع ترك الحقل فارغاَ',
+        'min' => 'لابد ان يكون الحقل مكون على الاقل من 8 خانات',
+        'email' => 'هذا الإيميل غير صحيح',
+        'name.max' => 'لابد ان يكون الحقل مكون على الاكثر من 50 خانة',
+        'unique' => 'هذا الايميل مسجل فى الموقع',
+        'same' => 'لابد ان يكون الباسورد متطابق',
+        'image' => 'لابد ان يكون المف صورة',
+        'mimes' => 'لابد ان يكون الصورة jpeg,jpg,png',
+        'image.max' => 'يجب ان تكون الصورة اصغر من 2 ميجا',
+        'regex' => 'لا بد ان يكون الحقل ارقام فقط',
+        'max' => 'لابد ان يكون الحقل مكون على الاكثر من 255 خانة',
+    ];
+
     public function register(){
         $validatedData = $this->validate();
         $data = array_merge(
@@ -33,8 +47,8 @@ class Register extends Component
         //dd($data);
         //dd($validatedData);
         Doctor::create($data);
-        if(Auth::guard('doctor')->attempt($validatedData)){ 
-            session()->flash('message', "You are Login successful."); 
+        if(Auth::guard('doctor')->attempt($validatedData)){
+            session()->flash('message', "You are Login successful.");
             return redirect()->route('home');
         }
     }

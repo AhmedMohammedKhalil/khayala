@@ -10,7 +10,7 @@ class Competition extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'status', 'total','photo','address','description'
+        'name', 'status', 'total','photo','address','description','organization','appointment'
     ];
 
     public function user_booking()
@@ -20,4 +20,8 @@ class Competition extends Model
                 ->withPivot('status');
     }
 
+    public function userBooking() {
+        return $this->belongsToMany(User::class,'user_competitions')
+                ->wherePivot('status', 1);
+    }
 }

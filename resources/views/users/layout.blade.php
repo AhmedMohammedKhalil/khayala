@@ -9,15 +9,15 @@
             </div>
         </div>
         <!-- End Page Title Area -->
-    
+
         <!-- Start Courses Details Area -->
         <section class="courses-details-area" style="padding: 40px 0">
             <div class="container">
                 <div class="row">
+                    @include('users.menu')
                     <div class="col-lg-9 col-md-12" >
                         @yield('section')
                     </div>
-                    @include('users.menu')
                 </div>
             </div>
         </section>

@@ -29,6 +29,19 @@ class Settings extends Component
 
     }
 
+    protected $messages = [
+        'required' => 'ممنوع ترك الحقل فارغاَ',
+        'min' => 'لابد ان يكون الحقل مكون على الاقل من 8 خانات',
+        'email' => 'هذا الإيميل غير صحيح',
+        'name.max' => 'لابد ان يكون الحقل مكون على الاكثر من 50 خانة',
+        'unique' => 'هذا الايميل مسجل فى الموقع',
+        'same' => 'لابد ان يكون الباسورد متطابق',
+        'image' => 'لابد ان يكون المف صورة',
+        'mimes' => 'لابد ان يكون الصورة jpeg,jpg,png',
+        'image.max' => 'يجب ان تكون الصورة اصغر من 2 ميجا',
+        'regex' => 'لا بد ان يكون الحقل ارقام فقط',
+        'max' => 'لابد ان يكون الحقل مكون على الاكثر من 255 خانة',
+    ];
 
     protected $rules = [
         'name' => ['required', 'string', 'max:50'],
@@ -40,7 +53,7 @@ class Settings extends Component
 
     public function updatedPhoto()
     {
-            $validatedata = $this->validate( 
+            $validatedata = $this->validate(
                 ['photo' => ['image','mimes:jpeg,jpg,png','max:2048']]
             );
     }
@@ -64,7 +77,7 @@ class Settings extends Component
             $this->photo->storeAs('trainers/'.$this->trainer_id,$photoname);
             File::deleteDirectory(public_path('img/livewire-tmp'));
         }
-        session()->flash('message', "Your Profile Updated."); 
+        session()->flash('message', "Your Profile Updated.");
         return redirect()->route('trainer.profile');
     }
 

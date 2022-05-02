@@ -11,12 +11,12 @@ class Work extends Model
 
 
     protected $fillable = [
-        'trainer_id', 'name', 'job_estimation','details','job_title', 'placement'
+        'trainer_id','job_estimation','details','job_title', 'placement'
     ];
 
     public function trainer()
     {
         return $this->belongsTo(Trainer::class);
     }
-    
+
 }

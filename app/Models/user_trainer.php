@@ -12,4 +12,12 @@ class user_trainer extends Model
     protected $fillable = [
         'user_id', 'trainer_id', 'book_at','status'
     ];
+
+    public function trainer() {
+        return $this->belongsTo(Trainer::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

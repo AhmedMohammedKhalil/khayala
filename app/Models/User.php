@@ -56,7 +56,7 @@ class User extends Authenticatable
                 ->withPivot('book_at','status');
     }
 
-    public function competiton_booking()
+    public function competition_booking()
     {
         return $this->belongsToMany(Competition::class,'user_competitions')
                 ->withTimestamps()

@@ -14,4 +14,13 @@ class user_competition extends Model
         'user_id', 'competition_id', 'status'
     ];
 
+
+    public function competition() {
+        return $this->belongsTo(Competition::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
 }

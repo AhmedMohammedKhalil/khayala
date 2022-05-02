@@ -23,7 +23,11 @@ class ChangePassword extends Component
         'confirm_password' => ['required', 'string', 'min:8','same:password'],
     ];
 
-   
+    protected $messages = [
+        'required' => 'ممنوع ترك الحقل فارغاَ',
+        'min' => 'لابد ان يكون الحقل مكون على الاقل من 8 خانات',
+        'same' => 'لابد ان يكون الباسورد متطابق',
+    ];
 
     public function edit() {
 
@@ -31,7 +35,7 @@ class ChangePassword extends Component
         $data =['password' => Hash::make($this->password)];
 
         User::whereId($this->user_id)->update($data);
-        session()->flash('message', "Your Profile Updated."); 
+        session()->flash('message', "Your Profile Updated.");
         return redirect()->route('user.profile');
     }
 

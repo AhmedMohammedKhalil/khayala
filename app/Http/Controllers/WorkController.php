@@ -3,84 +3,49 @@
 namespace App\Http\Controllers;
 
 use App\Models\Work;
-use App\Http\Requests\StoreWorkRequest;
-use App\Http\Requests\UpdateWorkRequest;
+use Illuminate\Http\Request;
 
 class WorkController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $works = Work::where('trainer_id',auth('trainer')->user()->id)->get();
+        $page_name = 'الأعمال';
+        return view('trainers.works.index',compact('works','page_name'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        $page_name = 'إضافة عمل';
+        return view('trainers.works.create',compact('page_name'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreWorkRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreWorkRequest $request)
+
+
+
+    public function show(Request $r)
     {
-        //
+        $work = Work::whereId($r->id)->first();
+        $page_name = 'عرض العمل';
+        return view('trainers.works.show',compact('work','page_name'));
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Work  $work
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Work $work)
+
+    public function edit(Request $r)
     {
-        //
+        $work = Work::whereId($r->id)->first();
+        $page_name = 'تعديل العمل';
+        return view('trainers.works.edit',compact('work','page_name'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Work  $work
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Work $work)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateWorkRequest  $request
-     * @param  \App\Models\Work  $work
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateWorkRequest $request, Work $work)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Work  $work
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Work $work)
+    public function delete(Request $r)
     {
-        //
+        Work::destroy($r->id);
+        return redirect()->route('trainer.works');
     }
 }
