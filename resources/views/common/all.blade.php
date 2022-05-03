@@ -1,3 +1,4 @@
+
 <!-- Start Doctor Area -->
 @if(count($doctors) > 0)
 <section class="courses-area ptb-80 bg-image bg-color-none">
@@ -7,9 +8,9 @@
         </div>
         <div class="row">
             @if(count($doctors) > 3)
-            <div class="courses-slides owl-carousel owl-theme">
+            <div class="courses-slides owl-carousel owl-theme" dir="ltr">
                 @foreach ($doctors as $doc)
-                <div class="col-lg-12 col-md-12">
+                <div class="col-lg-12 col-md-12" dir="rtl">
                     <div class="single-courses">
                         <div class="courses-image">
                             @if($doc->photo != null)
@@ -70,9 +71,9 @@
 
         <div class="row">
             @if(count($trainers) > 3)
-            <div class="courses-slides owl-carousel owl-theme">
+            <div class="courses-slides owl-carousel owl-theme" dir="ltr">
                 @foreach ($trainers as $trainer)
-                <div class="col-lg-12 col-md-12">
+                <div class="col-lg-12 col-md-12" dir="rtl">
                     <div class="single-courses">
                         <div class="courses-image">
                             @if($doc->photo != null)
@@ -132,9 +133,9 @@
         <div class="row">
             @if(count($products) > 3)
 
-            <div class="products-slides owl-carousel owl-theme">
+            <div class="products-slides owl-carousel owl-theme" dir="ltr">
                 @foreach ($products as $p)
-                <div class="col-lg-12 col-md-12">
+                <div class="col-lg-12 col-md-12" dir="rtl">
                     <div class="single-products">
                         <div class="products-image">
                             @if($p->photo != null)
