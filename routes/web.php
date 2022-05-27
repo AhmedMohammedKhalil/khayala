@@ -23,6 +23,10 @@ Route::get('/competition/show', 'HomeController@showCompetition')->name('competi
 Route::get('/doctor/show', 'HomeController@showDoctor')->name('doctorDetails.show');
 Route::get('/product/show', 'HomeController@showProduct')->name('productDetails.show');
 Route::get('/trainer/show', 'HomeController@showTrainer')->name('trainerDetails.show');
+Route::get('/booking-doctor','HomeController@bookDoctor')->name('user.booking.doctor');
+Route::get('/booking-doctor-details','HomeController@bookDoctorDetails')->name('booking.doctor.details');
+Route::get('/booking-trainer','HomeController@bookTrainer')->name('user.booking.trainer');
+Route::get('/booking-trainer-details','HomeController@bookTrainerDetails')->name('booking.trainer.details');
 
 
 Route::get('/search','HomeController@search')->name('search');
@@ -77,8 +81,11 @@ Route::middleware(['auth:doctor'])->name('doctor.')->prefix('doctor')->group(fun
 
 
     Route::get('/bookings','DoctorController@showBooking')->name('bookings');
-    Route::get('/bookings/accept','DoctorController@acceptBooking')->name('booking.accept');
-    Route::get('/bookings/reject','DoctorController@rejectBooking')->name('booking.reject');
+    Route::get('/bookings/details','DoctorController@BookingDetails')->name('booking.details');
+    Route::get('/bookings/add','DoctorController@addBooking')->name('booking.add');
+    Route::get('/bookings/edit','DoctorController@editBooking')->name('booking.edit');
+    Route::get('/bookings/delete','DoctorController@deleteBooking')->name('booking.delete');
+
 
 
 
@@ -107,8 +114,12 @@ Route::middleware(['auth:trainer'])->name('trainer.')->prefix('trainer')->group(
 
 
     Route::get('/bookings','TrainerController@showBooking')->name('bookings');
-    Route::get('/bookings/accept','TrainerController@acceptBooking')->name('booking.accept');
-    Route::get('/bookings/reject','TrainerController@rejectBooking')->name('booking.reject');
+    Route::get('/bookings/details','TrainerController@BookingDetails')->name('booking.details');
+
+
+    Route::get('/bookings/add','TrainerController@addBooking')->name('booking.add');
+    Route::get('/bookings/edit','TrainerController@editBooking')->name('booking.edit');
+    Route::get('/bookings/delete','TrainerController@deleteBooking')->name('booking.delete');
 
     Route::get('/orders','TrainerController@showOrders')->name('orders');
 
@@ -125,10 +136,6 @@ Route::middleware(['auth:user'])->name('user.')->prefix('user')->group(function 
 
     Route::get('/booking/competition','UserController@bookCompetition')->name('booking.competition');
     Route::get('/booking/competition/show','UserController@showBookingCompetition')->name('booking.competition.show');
-    Route::get('/booking/doctor','UserController@bookDoctor')->name('booking.doctor');
-    Route::get('/booking/doctor/show','UserController@showBookingDoctor')->name('booking.doctor.show');
-    Route::get('/booking/trainer','UserController@bookTrainer')->name('booking.trainer');
-    Route::get('/booking/trainer/show','UserController@showBookingTrainer')->name('booking.trainer.show');
     Route::get('/buy','UserController@buyProduct')->name('buy');
     Route::get('/buy/products','UserController@showBuyingProducts')->name('buy.products');
 

@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
+use App\Models\booking_doctor;
 use App\Models\User;
-use App\Models\user_doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,25 +50,46 @@ class DoctorController extends Controller
 
 
     public function showBooking() {
-        $page_name = 'حجز المواعيد';
-        $bookings = user_doctor::where('doctor_id',auth('doctor')->user()->id)->get();
-        return view('doctors.bookDoctors',compact('bookings','page_name'));
+        $bookings = Doctor::whereId(auth('doctor')->user()->id)->first()->bookings;
+        $page_name = 'جدول مواعيد الدكتور';
+        return view('doctors.bookings.index',compact('bookings','page_name'));
+
     }
 
 
-    public function acceptBooking(Request $r) {
+    public function addBooking() {
         $page_name = 'إضافة ميعاد';
-        $booking  = user_doctor::whereId($r->id)->first();
-        return view('doctors.acceptBookDoctor',compact('booking','page_name'));
+        return view('doctors.bookings.add',compact('page_name'));
+
     }
 
-    public function rejectBooking(Request $r) {
-        $page_name = 'حجز المواعيد';
-        $booking  = user_doctor::whereId($r->id)->first();
-        $booking->status = '2';
-        $booking->save();
-        $bookings = user_doctor::where('doctor_id',auth('doctor')->user()->id)->get();
-        return view('doctors.bookDoctors',compact('bookings','page_name'));
+
+    public function editBooking(Request $r) {
+
+        $booking = booking_doctor::whereId($r->id)->first();
+        $page_name = 'تعديل ميعاد';
+        return view('doctors.bookings.edit',compact('booking','page_name'));
+
     }
+
+
+    public function deleteBooking(Request $r) {
+
+        booking_doctor::destroy($r->id);
+        return redirect()->route('doctor.bookings');
+
+    }
+
+
+
+
+    public function BookingDetails(Request $r){
+        $booking = booking_doctor::find($r->id);
+        $page_name = 'تفاصيل عن الميعاد';
+        return view('doctors.bookings.show',compact('booking','page_name'));
+    }
+
+
+
 
 }

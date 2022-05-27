@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Trainer extends Authenticatable
@@ -29,11 +30,9 @@ class Trainer extends Authenticatable
         return $this->hasMany(Product::class,'trainer_id');
     }
 
-    public function user_booking()
+    public function bookings()
     {
-        return $this->belongsToMany(User::class,'user_trainers')
-                ->withTimestamps()
-                ->withPivot('book_at','status');
+        return $this->hasMany(booking_trainer::class,'trainer_id');
     }
 
     public function rates()

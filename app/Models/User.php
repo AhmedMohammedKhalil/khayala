@@ -42,19 +42,8 @@ class User extends Authenticatable
                 ->withTimestamps();
     }
 
-    public function doctor_booking()
-    {
-        return $this->belongsToMany(Doctor::class,'user_doctors')
-                ->withTimestamps()
-                ->withPivot('book_at','status');
-    }
 
-    public function trainer_booking()
-    {
-        return $this->belongsToMany(Trainer::class,'user_trainers')
-                ->withTimestamps()
-                ->withPivot('book_at','status');
-    }
+
 
     public function competition_booking()
     {

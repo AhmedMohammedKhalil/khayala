@@ -16,6 +16,7 @@
     <!-- Styles -->
 
     <!-- Bootstrap Min CSS -->
+
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- Animate Min CSS -->
     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
@@ -34,6 +35,10 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.min.js"></script>
 
     @livewireStyles
     @stack('css')
@@ -69,14 +74,14 @@
                             <li class="nav-item"><a href="{{ route('home') }}" class="nav-link">الرئيسية</a></li>
 
                             @if(!auth('doctor')->check() && !auth('trainer')->check() && !auth('admin')->check() && !auth('user')->check())
-                                <li class="nav-item"><a href="#" class="nav-link">إنشاء حساب <i class="icofont-simple-down"></i></a>
+                                {{-- <li class="nav-item"><a href="#" class="nav-link">إنشاء حساب <i class="icofont-simple-down"></i></a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item"><a href="{{ route('doctor.register') }}" class="nav-link">الدكتور</a></li>
                                         <li class="nav-item"><a href="{{ route('trainer.register') }}" class="nav-link">المدرب</a></li>
                                         <li class="nav-item"><a href="{{ route('user.register') }}" class="nav-link">المستخدم</a></li>
 
                                     </ul>
-                                </li>
+                                </li> --}}
 
                                 <li class="nav-item"><a href="#" class="nav-link">تسجيل دخول <i class="icofont-simple-down"></i></a>
                                     <ul class="dropdown-menu">
@@ -149,7 +154,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div>
-                        <p class="text-center"><i class="icofont-copyright"></i> جميع الحقوق محفوظة</p>
+                        <p class="text-center"><i class="icofont-copyright"></i> جميع الحقوق محفوظة @ <span dir="ltr">   2022 - KHAYALA </span></p>
                     </div>
                 </div>
             </div>
@@ -158,6 +163,7 @@
     <!-- End Footer Area -->
 
     <div class="go-top" style="left: 15px; right:unset"><i class="icofont-swoosh-up"></i><i class="icofont-swoosh-up"></i></div>
+
 
     <!-- jQuery Min JS -->
     <script src="{{ asset('js/jquery.min.js')}}"></script>

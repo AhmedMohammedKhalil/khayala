@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\booking_doctor;
+use App\Models\booking_trainer;
 use App\Models\Competition;
 use App\Models\Doctor;
 use App\Models\Product;
@@ -77,6 +79,36 @@ class HomeController extends Controller
         $trainers = Trainer::all();
         $products = Product::all();
         return view('search',compact('trainers','products','doctors'));
+    }
+
+
+
+    public function bookTrainer(Request $r) {
+        $bookings = Trainer::whereId($r->id)->first()->bookings;
+        $page_name = 'جدول مواعيد المدرب';
+        return view('bookTrainers',compact('bookings','page_name'));
+
+    }
+
+    public function bookTrainerDetails(Request $r) {
+        $booking = booking_trainer::find($r->id);
+        $page_name = 'تفاصيل عن الميعاد';
+        return view('bookTrainerDetails',compact('booking','page_name'));
+
+    }
+
+
+    public function bookDoctor(Request $r) {
+        $bookings = Doctor::whereId($r->id)->first()->bookings;
+        $page_name = 'جدول مواعيد الدكتور';
+        return view('bookDoctors',compact('bookings','page_name'));
+
+    }
+
+    public function bookDoctorDetails(Request $r) {
+        $booking = booking_doctor::find($r->id);
+        $page_name = 'تفاصيل عن الميعاد';
+        return view('bookDoctorDetails',compact('booking','page_name'));
     }
 
 

@@ -23,7 +23,7 @@
                 </li>
                 <li>
                     <span class="comment-author-link">
-                            <a href="{{ route('doctor.bookings') }}">طلبات حجز المواعيد</a>
+                            <a href="{{ route('doctor.bookings') }}">جدول المواعيد</a>
                     </span>
                 </li>
             </ul>

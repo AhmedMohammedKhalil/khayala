@@ -26,11 +26,9 @@ class Doctor extends Authenticatable
         return $this->hasMany(Cases::class,'doctor_id');
     }
 
-    public function user_booking()
+    public function bookings()
     {
-        return $this->belongsToMany(User::class,'user_doctors')
-                ->withTimestamps()
-                ->withPivot('book_at','status');
+        return $this->hasMany(booking_doctor::class,'doctor_id');
     }
 
     public function rates()

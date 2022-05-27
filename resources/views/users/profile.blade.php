@@ -13,7 +13,6 @@
                     <h3>{{ auth('user')->user()->name }}</h3>
                     <span>{{ auth('user')->user()->email }}</span>
                     <span>{{ auth('user')->user()->phone }}</span>
-
                 </div>
                 <p style="font-style: normal">{{ nl2br(auth('user')->user()->address) }}</p>
             </div>

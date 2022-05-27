@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,20 +14,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_doctors', function (Blueprint $table) {
+        Schema::create('booking_doctors', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('doctor_id')->unsigned();
             $table->foreign('doctor_id')
                 ->references('id')->on('doctors')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->integer('status')->nullable()->default(0);
-            $table->timestamp('book_at')->nullable();
+            $table->string('title',100);
+            $table->text('description');
+            $table->integer('status');
+            $table->timestamp('start')->default(Carbon::now());
+            $table->timestamp('end')->default(Carbon::now());
             $table->timestamps();
         });
     }
@@ -38,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_doctors');
+        Schema::dropIfExists('booking_doctors');
     }
 };

@@ -33,7 +33,7 @@
                 </li>
                 <li>
                     <span class="comment-author-link">
-                            <a href="{{ route('trainer.bookings') }}">طلبات حجز المواعيد</a>
+                            <a href="{{ route('trainer.bookings') }}">جدول المواعيد</a>
                     </span>
                 </li>
             </ul>

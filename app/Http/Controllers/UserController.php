@@ -6,9 +6,7 @@ use App\Models\Competition;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\user_competition;
-use App\Models\user_doctor;
 use App\Models\user_product;
-use App\Models\user_trainer;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -60,35 +58,7 @@ class UserController extends Controller
     }
 
 
-    public function bookTrainer(Request $r) {
-        $user = User::find(Auth::guard('user')->user()->id);
-        $book_trainer = user_trainer::where('trainer_id',$r->id)
-                            ->where('user_id',$user->id)
-                            ->first();
 
-        if($book_trainer && $book_trainer->status == 0) {
-            $book_trainer->delete();
-        }
-        $user->trainer_booking()->attach($r->id);
-        return redirect()->route('user.booking.trainer.show');
-
-    }
-
-
-
-    public function bookDoctor(Request $r) {
-        $user = User::find(Auth::guard('user')->user()->id);
-        $book_doctor = user_doctor::where('doctor_id',$r->id)
-                            ->where('user_id',$user->id)
-                            ->first();
-
-        if($book_doctor && $book_doctor->status == 0) {
-            $book_doctor->delete();
-        }
-        $user->doctor_booking()->attach($r->id);
-        return redirect()->route('user.booking.doctor.show');
-
-    }
 
     public function buyProduct(Request $r) {
         $user = User::find(Auth::guard('user')->user()->id);
@@ -109,19 +79,5 @@ class UserController extends Controller
         return view('users.bookCompetitions',compact('bookings','page_name'));
     }
 
-
-    public function showBookingTrainer() {
-        $page_name = 'حجز مواعيد المدربين';
-        $bookings = user_trainer::where('user_id',auth('user')->user()->id)->get();
-        return view('users.bookTrainers',compact('bookings','page_name'));
-    }
-
-
-
-    public function showBookingDoctor() {
-        $page_name = 'حجز مواعيد الدكاترة';
-        $bookings = user_doctor::where('user_id',auth('user')->user()->id)->get();
-        return view('users.bookDoctors',compact('bookings','page_name'));
-    }
 
 }

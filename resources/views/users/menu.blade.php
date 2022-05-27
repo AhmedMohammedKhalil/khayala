@@ -21,17 +21,6 @@
                             <a href="#">المشتريات</a>
                     </span>
                 </li>
-
-                <li>
-                    <span class="comment-author-link">
-                        <a href="{{ route('user.booking.trainer.show') }}">حجز مواعيد المدربين</a>
-                    </span>
-                </li>
-                <li>
-                    <span class="comment-author-link">
-                        <a href="{{ route('user.booking.doctor.show') }}">حجز مواعيد الدكاترة</a>
-                    </span>
-                </li>
                 <li>
                     <span class="comment-author-link">
                             <a href="{{ route('user.booking.competition.show') }}">إشتراكات المسابقات</a>

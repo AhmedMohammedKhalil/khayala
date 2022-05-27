@@ -87,3 +87,10 @@ form button.make-rate {
     font-size: 14px;
     font-weight: 600;
 }
+
+.fc-daygrid-event ,.fc-timegrid-event,.fc-list-event{
+    cursor: pointer;
+}
+.fc-event-main-frame {
+    color: black;
+}

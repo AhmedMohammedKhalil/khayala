@@ -43,8 +43,9 @@
                                     <div class="ptb-3">
                                         @livewire('user.rate', ['rate_type' => 'trainer','rate_id'=>$trainer->id], key('rate_'.$trainer->id))
                                     </div>
-                                    <a href="{{ route('user.booking.trainer',['id'=>$trainer->id]) }}" class="btn btn-primary">حجز ميعاد</a>
                                     @endauth
+                                    <a href="{{ route('user.booking.trainer',['id'=>$trainer->id]) }}" class="btn btn-primary">جدول المواعيد</a>
+
 
                                 </div>
                             </div>
@@ -96,6 +97,7 @@
                                                 <div class="products-content">
                                                     <h3><a href="{{ route('productDetails.show',['id'=>$p->id]) }}">{{ $p->name }}</a></h3>
                                                     <span>{{ $p->price }} دينار كويتى </span>
+
                                                     @auth('user')
                                                         <a href="{{ route('user.buy',['id'=>$p->id]) }}" class="add-to-cart-btn">اشترى الأن</a>
                                                     @endauth

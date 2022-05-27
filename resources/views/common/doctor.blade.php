@@ -39,9 +39,8 @@
                                         <div class="ptb-3">
                                             @livewire('user.rate', ['rate_type' => 'doctor','rate_id'=>$doctor->id], key('rate_'.$doctor->id))
                                         </div>
-
-                                        <a href="{{ route('user.booking.doctor',['id'=>$doctor->id]) }}" class="btn btn-primary">حجز ميعاد</a>
                                     @endauth
+                                    <a href="{{ route('user.booking.doctor',['id'=>$doctor->id]) }}" class="btn btn-primary">جدول المواعيد</a>
 
                                 </div>
                             </div>

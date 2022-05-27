@@ -2,7 +2,7 @@
     <div class="d-table" style="">
         <div class="d-table-cell">
             <div class="login-form">
-                <h3>سجل الأن او <a href="{{ route('trainer.register') }}">إنشاء حساب</a></h3>
+                <h3>سجل الأن او <a href="{{ route('trainer.register') }}" class="text-decoration-underline">إنشاء حساب</a></h3>
 
                 <form wire:submit.prevent='login'>
                     @if (session()->has('error'))

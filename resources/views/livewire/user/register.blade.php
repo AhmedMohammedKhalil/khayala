@@ -2,7 +2,7 @@
     <div class="d-table" style="">
         <div class="d-table-cell">
             <div class="login-form">
-                <h3>إنشئ حساب أو <a href="{{ route('user.login') }}"> سجل الان </a></h3>
+                <h3>إنشئ حساب أو <a href="{{ route('user.login') }}" class="text-decoration-underline"> سجل الان </a></h3>
 
                 <form wire:submit.prevent='register'>
                     @if (session()->has('error'))
