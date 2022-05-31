@@ -9,10 +9,12 @@
         </div>
     </div>
 <!-- End Page Title Area -->
-
-<div class=" pt-5 pb-5">
-    @include('common.bookTrainers')
-</div>
+    @auth('user')
+    <a style="    display: block; width: fit-content;margin: 20px auto;" href="{{ route('user.trainerbooking.add',['id'=>$trainer_id]) }}" class="btn btn-primary">إضافة ميعاد</a>
+    @endauth
+    <div class=" pt-5 pb-5">
+        @include('common.bookTrainers')
+    </div>
 
 @endsection
 

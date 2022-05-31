@@ -9,11 +9,15 @@ class booking_doctor extends Model
 
 
     protected $fillable = [
-        'doctor_id', 'start','end','status','title','description'
+        'doctor_id','user_id','start','end','status','title','description'
     ];
 
     public function doctor() {
         return $this->belongsTo(Doctor::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 
 

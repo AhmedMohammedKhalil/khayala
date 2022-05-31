@@ -23,9 +23,9 @@ Route::get('/competition/show', 'HomeController@showCompetition')->name('competi
 Route::get('/doctor/show', 'HomeController@showDoctor')->name('doctorDetails.show');
 Route::get('/product/show', 'HomeController@showProduct')->name('productDetails.show');
 Route::get('/trainer/show', 'HomeController@showTrainer')->name('trainerDetails.show');
-Route::get('/booking-doctor','HomeController@bookDoctor')->name('user.booking.doctor');
+Route::get('/booking-doctor','HomeController@bookDoctor')->name('booking.doctor');
 Route::get('/booking-doctor-details','HomeController@bookDoctorDetails')->name('booking.doctor.details');
-Route::get('/booking-trainer','HomeController@bookTrainer')->name('user.booking.trainer');
+Route::get('/booking-trainer','HomeController@bookTrainer')->name('booking.trainer');
 Route::get('/booking-trainer-details','HomeController@bookTrainerDetails')->name('booking.trainer.details');
 
 
@@ -132,7 +132,14 @@ Route::middleware(['auth:user'])->name('user.')->prefix('user')->group(function 
     Route::get('/settings','UserController@settings')->name('settings');
     Route::get('/changePassword','UserController@changePassword')->name('changePassword');
     Route::get('/logout','UserController@logout')->name('logout');
-
+    Route::get('/doctorbooking/add','UserController@addDoctorBooking')->name('doctorbooking.add');
+    Route::get('/trainerbooking/add','UserController@addTrainerBooking')->name('trainerbooking.add');
+    Route::get('/doctorbooking/del','UserController@delDoctorBooking')->name('doctorbooking.del');
+    Route::get('/trainerbooking/del','UserController@delTrainerBooking')->name('trainerbooking.del');
+    Route::get('/booking-doctor','UserController@showbookDoctor')->name('booking.doctor');
+    Route::get('/booking-doctor/details','UserController@doctorBookingDetails')->name('booking.doctor.details');
+    Route::get('/booking-trainer','UserController@showbookTrainer')->name('booking.trainer');
+    Route::get('/booking-trainer/details','UserController@trainerBookingDetails')->name('booking.trainer.details');
 
     Route::get('/booking/competition','UserController@bookCompetition')->name('booking.competition');
     Route::get('/booking/competition/show','UserController@showBookingCompetition')->name('booking.competition.show');

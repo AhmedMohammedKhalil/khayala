@@ -50,37 +50,10 @@ class DoctorController extends Controller
 
 
     public function showBooking() {
-        $bookings = Doctor::whereId(auth('doctor')->user()->id)->first()->bookings;
+        $bookings = booking_doctor::where('doctor_id',auth('doctor')->user()->id)->get();
         $page_name = 'جدول مواعيد الدكتور';
         return view('doctors.bookings.index',compact('bookings','page_name'));
-
     }
-
-
-    public function addBooking() {
-        $page_name = 'إضافة ميعاد';
-        return view('doctors.bookings.add',compact('page_name'));
-
-    }
-
-
-    public function editBooking(Request $r) {
-
-        $booking = booking_doctor::whereId($r->id)->first();
-        $page_name = 'تعديل ميعاد';
-        return view('doctors.bookings.edit',compact('booking','page_name'));
-
-    }
-
-
-    public function deleteBooking(Request $r) {
-
-        booking_doctor::destroy($r->id);
-        return redirect()->route('doctor.bookings');
-
-    }
-
-
 
 
     public function BookingDetails(Request $r){

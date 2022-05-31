@@ -84,9 +84,10 @@ class HomeController extends Controller
 
 
     public function bookTrainer(Request $r) {
-        $bookings = Trainer::whereId($r->id)->first()->bookings;
+        $trainer_id = $r->id;
+        $bookings = booking_trainer::where('trainer_id',$r->id)->get();
         $page_name = 'جدول مواعيد المدرب';
-        return view('bookTrainers',compact('bookings','page_name'));
+        return view('bookTrainers',compact('bookings','page_name','trainer_id'));
 
     }
 
@@ -99,9 +100,10 @@ class HomeController extends Controller
 
 
     public function bookDoctor(Request $r) {
-        $bookings = Doctor::whereId($r->id)->first()->bookings;
+        $doctor_id = $r->id;
+        $bookings = booking_doctor::where('doctor_id',$r->id)->get();
         $page_name = 'جدول مواعيد الدكتور';
-        return view('bookDoctors',compact('bookings','page_name'));
+        return view('bookDoctors',compact('bookings','page_name','doctor_id'));
 
     }
 

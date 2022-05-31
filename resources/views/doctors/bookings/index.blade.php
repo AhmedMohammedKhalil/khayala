@@ -5,9 +5,6 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <a href="{{ route('doctor.booking.add') }}" class="btn btn-primary">إضافة ميعاد</a>
-            </div>
-            <div class="col-lg-12 col-md-12">
                 @include('common.bookDoctors')
             </div>
         </div>

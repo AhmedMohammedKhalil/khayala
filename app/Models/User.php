@@ -44,6 +44,15 @@ class User extends Authenticatable
 
 
 
+    public function trainerBookings()
+    {
+        return $this->hasMany(booking_trainer::class,'user_id');
+    }
+
+    public function doctorBookings()
+    {
+        return $this->hasMany(booking_doctor::class,'user_id');
+    }
 
     public function competition_booking()
     {

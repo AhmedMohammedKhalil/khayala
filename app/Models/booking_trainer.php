@@ -8,11 +8,15 @@ class booking_trainer extends Model
 {
 
     protected $fillable = [
-        'trainer_id', 'start','end','status','title','description'
+        'trainer_id','user_id', 'start','end','status','title','description'
     ];
 
     public function trainer() {
         return $this->belongsTo(Trainer::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 
 

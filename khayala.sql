@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2022 at 07:40 PM
+-- Generation Time: May 31, 2022 at 06:20 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -59,25 +59,25 @@ DROP TABLE IF EXISTS `booking_doctors`;
 CREATE TABLE IF NOT EXISTS `booking_doctors` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `doctor_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
   `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int(11) NOT NULL,
-  `start` timestamp NOT NULL DEFAULT '2022-05-24 13:46:15',
-  `end` timestamp NOT NULL DEFAULT '2022-05-24 13:46:15',
+  `start` timestamp NOT NULL DEFAULT '2022-05-31 02:48:30',
+  `end` timestamp NOT NULL DEFAULT '2022-05-31 02:48:30',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `booking_doctors_doctor_id_foreign` (`doctor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `booking_doctors_doctor_id_foreign` (`doctor_id`),
+  KEY `booking_doctors_user_id_foreign` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `booking_doctors`
 --
 
-INSERT INTO `booking_doctors` (`id`, `doctor_id`, `title`, `description`, `status`, `start`, `end`, `created_at`, `updated_at`) VALUES
-(1, 4, 'ميعاد مهم جدا', 'ميعا مهم جدا', 0, '2022-05-27 17:00:00', '2022-05-27 20:00:00', '2022-05-27 17:00:00', '2022-05-27 17:00:00'),
-(2, 1, 'ميعاد متاح', 'متاح طول اليوم', 1, '2022-05-27 22:00:00', '2022-05-28 21:59:00', '2022-05-27 17:17:00', '2022-05-27 17:17:00'),
-(3, 3, 'ميعاد متاح', 'ميعاد متاح', 1, '2022-05-28 10:00:00', '2022-05-28 21:59:00', '2022-05-27 17:24:00', '2022-05-27 17:24:00');
+INSERT INTO `booking_doctors` (`id`, `doctor_id`, `user_id`, `title`, `description`, `status`, `start`, `end`, `created_at`, `updated_at`) VALUES
+(1, 3, 1, 'حجز ميعاد', 'تفاصيل عن الحالة', 0, '2022-05-31 02:53:00', '2022-05-31 03:23:00', '2022-05-31 03:54:24', '2022-05-31 03:54:24');
 
 -- --------------------------------------------------------
 
@@ -89,25 +89,25 @@ DROP TABLE IF EXISTS `booking_trainers`;
 CREATE TABLE IF NOT EXISTS `booking_trainers` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `trainer_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
   `status` int(11) NOT NULL,
-  `start` timestamp NOT NULL DEFAULT '2022-05-24 13:46:17',
-  `end` timestamp NOT NULL DEFAULT '2022-05-24 13:46:17',
+  `start` timestamp NOT NULL DEFAULT '2022-05-31 02:48:42',
+  `end` timestamp NOT NULL DEFAULT '2022-05-31 02:48:42',
   `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `booking_trainers_trainer_id_foreign` (`trainer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `booking_trainers_trainer_id_foreign` (`trainer_id`),
+  KEY `booking_trainers_user_id_foreign` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `booking_trainers`
 --
 
-INSERT INTO `booking_trainers` (`id`, `trainer_id`, `status`, `start`, `end`, `title`, `description`, `created_at`, `updated_at`) VALUES
-(9, 1, 0, '2022-05-27 16:00:00', '2022-05-27 18:00:00', 'ميعاد مهم', 'ميعاد مهم جدا', '2022-05-27 17:55:22', '2022-05-27 17:55:22'),
-(10, 1, 1, '2022-05-27 18:00:00', '2022-05-27 21:59:00', 'ميعاد متاح', 'ميعاد متاح', '2022-05-27 17:57:14', '2022-05-27 17:57:14'),
-(11, 1, 1, '2022-05-27 22:00:00', '2022-05-28 21:59:00', 'متاح', 'مواعيد متاحة', '2022-05-27 17:59:32', '2022-05-27 18:02:09');
+INSERT INTO `booking_trainers` (`id`, `trainer_id`, `user_id`, `status`, `start`, `end`, `title`, `description`, `created_at`, `updated_at`) VALUES
+(1, 3, 1, 0, '2022-05-31 15:00:00', '2022-05-31 15:30:00', 'حجز ميعاد', 'تفاصيل', '2022-05-31 05:02:43', '2022-05-31 05:02:43');
 
 -- --------------------------------------------------------
 
@@ -213,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -232,8 +232,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2022_03_30_155327_create_user_products_table', 1),
 (12, '2022_03_30_155437_create_user_competitions_table', 1),
 (13, '2022_03_30_155653_create_rates_table', 1),
-(16, '2022_03_30_155352_create_booking_doctors_table', 2),
-(17, '2022_03_30_233526_create_booking_trainers_table', 2);
+(18, '2022_03_30_155352_create_booking_doctors_table', 2),
+(19, '2022_03_30_233526_create_booking_trainers_table', 2);
 
 -- --------------------------------------------------------
 
@@ -470,13 +470,15 @@ INSERT INTO `works` (`id`, `job_title`, `placement`, `details`, `job_estimation`
 -- Constraints for table `booking_doctors`
 --
 ALTER TABLE `booking_doctors`
-  ADD CONSTRAINT `booking_doctors_doctor_id_foreign` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `booking_doctors_doctor_id_foreign` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `booking_doctors_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `booking_trainers`
 --
 ALTER TABLE `booking_trainers`
-  ADD CONSTRAINT `booking_trainers_trainer_id_foreign` FOREIGN KEY (`trainer_id`) REFERENCES `trainers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `booking_trainers_trainer_id_foreign` FOREIGN KEY (`trainer_id`) REFERENCES `trainers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `booking_trainers_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `cases`

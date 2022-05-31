@@ -21,6 +21,11 @@ return new class extends Migration
                 ->references('id')->on('trainers')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->integer('status');
             $table->timestamp('start')->default(Carbon::now());
             $table->timestamp('end')->default(Carbon::now());

@@ -40,7 +40,7 @@
                                             @livewire('user.rate', ['rate_type' => 'doctor','rate_id'=>$doctor->id], key('rate_'.$doctor->id))
                                         </div>
                                     @endauth
-                                    <a href="{{ route('user.booking.doctor',['id'=>$doctor->id]) }}" class="btn btn-primary">جدول المواعيد</a>
+                                    <a href="{{ route('booking.doctor',['id'=>$doctor->id]) }}" class="btn btn-primary">جدول المواعيد</a>
 
                                 </div>
                             </div>

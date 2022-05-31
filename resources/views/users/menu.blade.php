@@ -18,12 +18,21 @@
             <ul>
                 <li>
                     <span class="comment-author-link">
-                            <a href="#">المشتريات</a>
+                            <a href="{{ route('user.buy.products') }}">المشتريات</a>
                     </span>
                 </li>
                 <li>
                     <span class="comment-author-link">
                             <a href="{{ route('user.booking.competition.show') }}">إشتراكات المسابقات</a>
+                    </span>
+                </li>
+                <li>
+                    <span class="comment-author-link">
+                            <a href="{{ route('user.booking.doctor') }}">جدول مواعيدى للدكاترة</a>
+                    </span>
+                </li><li>
+                    <span class="comment-author-link">
+                            <a href="{{ route('user.booking.trainer') }}">جدول مواعيدى للمدربين</a>
                     </span>
                 </li>
             </ul>

@@ -1,10 +1,11 @@
-@extends('trainers.layout')
+@extends('users.layout')
 @section('section')
 <section class="cart-area pb-80">
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                @include('common.bookTrainers')
+                @include('common.bookDoctors')
             </div>
         </div>
     </div>
@@ -14,7 +15,6 @@
 @push('js')
     <script>
 
-        console.log(@json($bookings));
         document.addEventListener('DOMContentLoaded', function() {
             var initialLocaleCode = 'ar';
             var calendarEl = document.getElementById('calendar');
@@ -33,10 +33,8 @@
             dayMaxEvents: true, // allow "more" link when too many events
             events: @json($bookings),
             eventClick: function(info) {
-                console.log(info.event.id);
-                id = info.event.id;
                 info.jsEvent.preventDefault(); // don't let the browser navigate
-                window.open("{{ route('trainer.booking.details') }}?id="+id,"_self");
+                window.open("{{ route('user.booking.doctor.details') }}?id="+info.event.id,"_self");
 
             }
             });
@@ -48,3 +46,5 @@
 
     </script>
 @endpush
+
+

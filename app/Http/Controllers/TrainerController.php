@@ -52,7 +52,7 @@ class TrainerController extends Controller
 
 
     public function showBooking(){
-        $bookings = Trainer::whereId(auth('trainer')->user()->id)->first()->bookings;
+        $bookings = booking_trainer::where('trainer_id',auth('trainer')->user()->id)->get();
         $page_name = 'جدول مواعيد المدرب';
         return view('trainers.bookings.index',compact('bookings','page_name'));
     }
@@ -62,32 +62,6 @@ class TrainerController extends Controller
         $page_name = 'تفاصيل عن الميعاد';
         return view('trainers.bookings.show',compact('booking','page_name'));
     }
-
-
-    public function addBooking() {
-        $page_name = 'إضافة ميعاد';
-        return view('trainers.bookings.add',compact('page_name'));
-
-    }
-
-
-    public function editBooking(Request $r) {
-
-        $booking = booking_trainer::whereId($r->id)->first();
-        $page_name = 'تعديل ميعاد';
-        return view('trainers.bookings.edit',compact('booking','page_name'));
-
-    }
-
-
-    public function deleteBooking(Request $r) {
-
-        booking_trainer::destroy($r->id);
-        return redirect()->route('trainer.bookings');
-
-    }
-
-
 
 
 

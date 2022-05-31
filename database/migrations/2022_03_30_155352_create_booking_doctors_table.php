@@ -21,6 +21,11 @@ return new class extends Migration
                 ->references('id')->on('doctors')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->string('title',100);
             $table->text('description');
             $table->integer('status');
