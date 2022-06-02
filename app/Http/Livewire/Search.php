@@ -19,8 +19,8 @@ class Search extends Component
         $this->products = '';
         $this->trainers = '';
         $this->doctors = '';
-        $this->products = Product::where('name','like','%'.$this->search.'%') 
-                                -> orwhere('details','like','\'%'.$this->search.'%')->get();
+        $this->products = Product::where('name','like','%'.$this->search.'%')
+                                -> orwhere('details','like','%'.$this->search.'%')->get();
         $this->trainers = Trainer::where('name','like','%'.$this->search.'%')->get();
         $this->doctors = Doctor::where('name','like','%'.$this->search.'%')->get();
     }

@@ -35,17 +35,17 @@ class Trainer extends Component
         $finish = $finish->modify('+30 minutes');
 
         if($st < $today) {
-            session()->flash('error', "لابد ان يكون ميعاد البدء اليوم او الايام القادمة");
+            session()->flash('error', "لابد ان يكون موعد البدء اليوم او الايام القادمة");
         } elseif ($st > $finish) {
-            session()->flash('error', "لابد ان يكون ميعاد البدء اصغر من ميعاد الانتهاء");
+            session()->flash('error', "لابد ان يكون موعد البدء اصغر من موعد الانتهاء");
         } else {
             $flag = true;
             $bookings = booking_trainer::where('trainer_id',$this->trainer_id)->get();
             foreach($bookings as $b) {
                 $b_start = new DateTime($b->start);
                 $b_end = new DateTime($b->end);
-                if($st > $b_start || $finish < $b_end) {
-                    session()->flash('error', "هذا الميعاد معارض مع ميعاد للمدرب");
+                if(($st > $b_start && $st < $b_end) || ($finish < $b_end && $finish > $b_start)) {
+                    session()->flash('error', "هذا الموعد معارض مع موعد للمدرب");
                     $flag = false;
                     break;
                 }
@@ -56,8 +56,8 @@ class Trainer extends Component
                 foreach($bookings as $b) {
                     $b_start = new DateTime($b->start);
                     $b_end = new DateTime($b->end);
-                    if($st > $b_start || $finish < $b_end) {
-                        session()->flash('error', "هذا الميعاد لا يناسبك. هناك ميعاد لديك فى نفس الوقت");
+                    if(($st > $b_start && $st < $b_end) || ($finish < $b_end && $finish > $b_start)) {
+                        session()->flash('error', "هذا الموعد لا يناسبك. هناك موعد لديك فى نفس الوقت");
                         $flag = false;
                         break;
                     }

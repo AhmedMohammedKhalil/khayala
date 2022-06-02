@@ -93,7 +93,7 @@ class HomeController extends Controller
 
     public function bookTrainerDetails(Request $r) {
         $booking = booking_trainer::find($r->id);
-        $page_name = 'تفاصيل عن الميعاد';
+        $page_name = 'تفاصيل عن الموعد';
         return view('bookTrainerDetails',compact('booking','page_name'));
 
     }
@@ -109,7 +109,7 @@ class HomeController extends Controller
 
     public function bookDoctorDetails(Request $r) {
         $booking = booking_doctor::find($r->id);
-        $page_name = 'تفاصيل عن الميعاد';
+        $page_name = 'تفاصيل عن الموعد';
         return view('bookDoctorDetails',compact('booking','page_name'));
     }
 

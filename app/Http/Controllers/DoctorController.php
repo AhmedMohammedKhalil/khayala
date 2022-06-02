@@ -58,7 +58,7 @@ class DoctorController extends Controller
 
     public function BookingDetails(Request $r){
         $booking = booking_doctor::find($r->id);
-        $page_name = 'تفاصيل عن الميعاد';
+        $page_name = 'تفاصيل عن الموعد';
         return view('doctors.bookings.show',compact('booking','page_name'));
     }
 

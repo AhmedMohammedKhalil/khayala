@@ -125,14 +125,14 @@ class UserController extends Controller
 
     public function trainerBookingDetails(Request $r){
         $booking = booking_trainer::find($r->id);
-        $page_name = 'تفاصيل عن الميعاد';
+        $page_name = 'تفاصيل عن الموعد';
         return view('users.trainer-booking-show',compact('booking','page_name'));
     }
 
 
     public function doctorBookingDetails(Request $r){
         $booking = booking_doctor::find($r->id);
-        $page_name = 'تفاصيل عن الميعاد';
+        $page_name = 'تفاصيل عن الموعد';
         return view('users.doctor-booking-show',compact('booking','page_name'));
     }
 

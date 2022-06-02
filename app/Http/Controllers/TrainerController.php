@@ -59,7 +59,7 @@ class TrainerController extends Controller
 
     public function BookingDetails(Request $r){
         $booking = booking_trainer::find($r->id);
-        $page_name = 'تفاصيل عن الميعاد';
+        $page_name = 'تفاصيل عن الموعد';
         return view('trainers.bookings.show',compact('booking','page_name'));
     }
 
